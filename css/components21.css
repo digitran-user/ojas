@@ -1,0 +1,922 @@
+/* ===================================================
+   21st.dev INSPIRED COMPONENTS — SOLAREDGE ODISHA
+   Lamp Beam · Marquee · Spotlight Cards · Shimmer · Particles
+   =================================================== */
+
+/* =============================================
+   1. LAMP / AURORA HERO BEAM (Aceternity-style)
+   ============================================= */
+.lamp-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lamp-beam-left,
+.lamp-beam-right {
+  position: absolute;
+  top: 0;
+  height: 56%;
+  width: 42%;
+  opacity: 0;
+  animation: lamp-expand 1.4s 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.lamp-beam-left {
+  right: 50%;
+  background: conic-gradient(from 70deg at center top,
+      #3B82F6 0%, rgba(59,130,246,0.35) 35%, transparent 60%);
+  mask-image: linear-gradient(to bottom, white 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, white 0%, transparent 100%);
+}
+
+.lamp-beam-right {
+  left: 50%;
+  background: conic-gradient(from 290deg at center top,
+      transparent 40%, rgba(59,130,246,0.35) 65%, #3B82F6 100%);
+  mask-image: linear-gradient(to bottom, white 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, white 0%, transparent 100%);
+}
+
+@keyframes lamp-expand {
+  from { opacity: 0; width: 18%; }
+  to   { opacity: 1; width: 42%; }
+}
+
+.lamp-glow-line {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, transparent, #60A5FA, #3B82F6, #60A5FA, transparent);
+  border-radius: 2px;
+  box-shadow: 0 0 24px 4px rgba(96, 165, 250, 0.7);
+  animation: glow-line-expand 1.2s 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes glow-line-expand {
+  from { width: 0; opacity: 0; }
+  to   { width: 52%; opacity: 1; }
+}
+
+.lamp-orb {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.45) 0%, rgba(59, 130, 246, 0.15) 50%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(30px);
+  animation: lamp-orb-pulse 3s ease-in-out infinite;
+  opacity: 0;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes lamp-orb-pulse {
+  0%   { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+  20%  { opacity: 1; }
+  50%  { transform: translate(-50%, -50%) scale(1.15); opacity: 0.85; }
+  100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.7; }
+}
+
+/* =============================================
+   2. PARTICLE CANVAS BACKGROUND
+   ============================================= */
+#particle-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+/* =============================================
+   3. ANIMATED GRADIENT TEXT (MagicUI-style)
+   ============================================= */
+.gradient-text-animated {
+  background: linear-gradient(
+    90deg,
+    #3B82F6 0%,
+    #60A5FA 25%,
+    #F59E0B 50%,
+    #3B82F6 75%,
+    #60A5FA 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 5s linear infinite;
+}
+
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* =============================================
+   4. SHIMMER BADGE (21st.dev-style glow badge)
+   ============================================= */
+.shimmer-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #1D4ED8;
+  margin-bottom: 28px;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 -8px 10px rgba(59,130,246,0.08),
+              0 4px 20px rgba(59,130,246,0.12);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.shimmer-badge::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0.6) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer-slide 2.5s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer-slide {
+  from { background-position: -200% 0; }
+  to   { background-position: 200% 0; }
+}
+
+/* =============================================
+   5. MARQUEE SCROLL (MagicUI Marquee-style)
+   ============================================= */
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+  padding: 0;
+  mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 0;
+  animation: marquee-scroll 30s linear infinite;
+  width: max-content;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 36px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border-right: 1px solid rgba(203,213,225,0.5);
+  transition: all 0.3s ease;
+}
+
+.marquee-item:hover {
+  background: rgba(59,130,246,0.05);
+}
+
+.marquee-item .m-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.marquee-item .m-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #64748B;
+  letter-spacing: 0.03em;
+}
+
+/* =============================================
+   6. SPOTLIGHT CARD (Aceternity-style)
+   ============================================= */
+.spotlight-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(59, 130, 246, 0.12),
+    transparent 40%
+  );
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+.spotlight-card:hover {
+  transform: translateY(-10px) scale(1.01);
+  box-shadow: 0 24px 60px rgba(30, 58, 138, 0.22);
+}
+
+/* =============================================
+   7. BORDER BEAM (MagicUI Border-Beam)
+   ============================================= */
+.border-beam-wrap {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.border-beam-wrap::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--beam-angle, 0deg),
+    transparent 0deg,
+    #3B82F6 60deg,
+    #F59E0B 120deg,
+    transparent 180deg
+  );
+  z-index: -1;
+  animation: beam-rotate 4s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes beam-rotate {
+  to { --beam-angle: 360deg; }
+}
+
+@property --beam-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* =============================================
+   8. MAGNETIC BUTTON (interactive hover)
+   ============================================= */
+.btn-magnetic {
+  transform: perspective(800px) rotateX(0deg) rotateY(0deg);
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* =============================================
+   9. ANIMATED COUNTER STAT
+   ============================================= */
+.stat-number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--blue-900);
+  line-height: 1;
+  transition: color 0.3s;
+}
+
+/* =============================================
+   10. GLOW BUTTON (Shimmer CTA)
+   ============================================= */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #3B82F6, #1E3A8A);
+  color: white;
+  border-radius: 999px;
+  padding: 16px 36px;
+  font-weight: 700;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 24px rgba(59, 130, 246, 0.5),
+              0 0 0 0 rgba(59, 130, 246, 0.4);
+  transition: transform 0.25s, box-shadow 0.25s;
+  animation: btn-pulse-shadow 3s ease-in-out infinite;
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: btn-shine 3.5s ease-in-out infinite;
+}
+
+@keyframes btn-shine {
+  0%, 100% { left: -75%; }
+  50%       { left: 150%; }
+}
+
+@keyframes btn-pulse-shadow {
+  0%, 100% { box-shadow: 0 4px 24px rgba(59,130,246,0.5), 0 0 0 0 rgba(59,130,246,0.3); }
+  50%       { box-shadow: 0 4px 36px rgba(59,130,246,0.65), 0 0 0 8px rgba(59,130,246,0); }
+}
+
+.btn-glow:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 40px rgba(59, 130, 246, 0.65);
+}
+
+/* =============================================
+   11. WORD REVEAL (Text animation)
+   ============================================= */
+.word-reveal {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.word-reveal .word {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.4s ease;
+}
+
+.word-reveal.revealed .word {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.word-reveal .word:nth-child(2) { transition-delay: 0.08s; }
+.word-reveal .word:nth-child(3) { transition-delay: 0.16s; }
+.word-reveal .word:nth-child(4) { transition-delay: 0.24s; }
+.word-reveal .word:nth-child(5) { transition-delay: 0.32s; }
+.word-reveal .word:nth-child(6) { transition-delay: 0.40s; }
+.word-reveal .word:nth-child(7) { transition-delay: 0.48s; }
+.word-reveal .word:nth-child(8) { transition-delay: 0.56s; }
+
+/* =============================================
+   12. BENTO GRID CARD STYLE (Feature Cards)
+   ============================================= */
+.bento-card {
+  background: white;
+  border: 1px solid #E2E8F0;
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #3B82F6, #F59E0B);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bento-card:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 20px 60px rgba(30, 58, 138, 0.12);
+  transform: translateY(-6px);
+}
+
+.bento-card:hover::before {
+  transform: scaleX(1);
+}
+
+.bento-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.bento-card:hover .bento-icon {
+  transform: scale(1.1) rotate(-5deg);
+  background: linear-gradient(135deg, #DBEAFE, #BFDBFE);
+}
+
+/* =============================================
+   13. TIMELINE STEP (Process Section)
+   ============================================= */
+.timeline-section {
+  background: #0F172A;
+  padding: 96px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(59,130,246,0.4), transparent);
+}
+
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-step {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.timeline-step:nth-child(even) {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.timeline-num {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3B82F6, #1E3A8A);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1rem;
+  color: white;
+  box-shadow: 0 0 0 4px rgba(59,130,246,0.2), 0 0 30px rgba(59,130,246,0.3);
+}
+
+.timeline-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.timeline-content p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.65;
+}
+
+/* =============================================
+   14. STATS COUNTER BAND
+   ============================================= */
+.stats-band {
+  background: linear-gradient(135deg, #1E3A8A 0%, #1e40af 100%);
+  padding: 64px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 32px 24px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+}
+
+.stat-item:last-child { border-right: none; }
+
+.stat-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3B82F6, #F59E0B);
+  transition: width 0.6s ease;
+}
+
+.stat-item.counted::after { width: 60%; }
+
+.stat-big-num {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 900;
+  color: white;
+  line-height: 1;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #60A5FA, #BFDBFE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-desc {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* =============================================
+   15. FLOATING NOTIFICATION (Hero widget)
+   ============================================= */
+.notif-toast {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.97);
+  border: 1px solid rgba(255,255,255,0.9);
+  border-radius: 14px;
+  padding: 12px 18px;
+  box-shadow: 0 12px 40px rgba(30, 58, 138, 0.18);
+  backdrop-filter: blur(12px);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1E3A8A;
+  animation: notif-float-y 4s ease-in-out infinite;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.notif-toast .notif-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.notif-toast .notif-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+  flex-shrink: 0;
+  animation: notif-pulse 2s ease-in-out infinite;
+}
+
+@keyframes notif-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25); }
+  50%       { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.1); }
+}
+
+@keyframes notif-float-y {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+.notif-toast-1 {
+  bottom: 90px;
+  right: -20px;
+  animation-delay: 0s;
+}
+
+.notif-toast-2 {
+  top: 55px;
+  left: -15px;
+  animation-delay: 1.5s;
+}
+
+.notif-toast-3 {
+  top: 50%;
+  right: -30px;
+  transform: translateY(-50%);
+  animation-delay: 3s;
+}
+
+/* =============================================
+   16. TEXT TYPEWRITER CURSOR
+   ============================================= */
+.typewriter-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background: #3B82F6;
+  margin-left: 3px;
+  vertical-align: text-bottom;
+  animation: cursor-blink 0.85s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* =============================================
+   17. ORBIT DECORATION (Hero visual)
+   ============================================= */
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  animation: orbit-spin linear infinite;
+}
+
+.orbit-ring::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #3B82F6;
+  border-radius: 50%;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px #3B82F6;
+}
+
+.orbit-ring-1 {
+  width: 280px;
+  height: 280px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-duration: 12s;
+}
+
+.orbit-ring-2 {
+  width: 380px;
+  height: 380px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-duration: 20s;
+  animation-direction: reverse;
+  border-color: rgba(245, 158, 11, 0.12);
+}
+
+.orbit-ring-2::before {
+  background: #F59E0B;
+  box-shadow: 0 0 10px #F59E0B;
+}
+
+@keyframes orbit-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Prevent the orbit rings from affecting layout */
+.orbit-wrapper {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* =============================================
+   18. SECTION REVEAL ACCENT LINE
+   ============================================= */
+.section-accent-line {
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #3B82F6, #F59E0B);
+  border-radius: 2px;
+  margin: 12px auto 0;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-header.revealed .section-accent-line {
+  width: 60px;
+}
+
+/* =============================================
+   19. PROCESS / HOW IT WORKS (Dark section)
+   ============================================= */
+.process-section {
+  background: #0F172A;
+  padding: 96px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.process-bg-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.process-section .section-title { color: white; }
+.process-section .section-tag {
+  background: rgba(255,255,255,0.06);
+  color: #93C5FD;
+  border-color: rgba(255,255,255,0.1);
+}
+.process-section .section-subtitle { color: rgba(255,255,255,0.5); }
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+  z-index: 1;
+  margin-top: 64px;
+}
+
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 32px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59,130,246,0.4), rgba(245,158,11,0.4), transparent);
+  z-index: 0;
+}
+
+.process-step {
+  text-align: center;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.process-step-num {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1e40af, #3B82F6);
+  border: 2px solid rgba(96,165,250,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: white;
+  margin: 0 auto 24px;
+  box-shadow: 0 0 0 6px rgba(59,130,246,0.12), 0 8px 30px rgba(59,130,246,0.25);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.process-step:hover .process-step-num {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 10px rgba(59,130,246,0.08), 0 12px 40px rgba(59,130,246,0.35);
+}
+
+.process-step h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.process-step p {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+
+/* =============================================
+   20. GLASS TESTIMONIAL CARD (Enhanced)
+   ============================================= */
+.testi-card-v2 {
+  background: white;
+  border: 1px solid #E2E8F0;
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 340px;
+}
+
+.testi-card-v2::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  right: 24px;
+  font-size: 8rem;
+  font-family: Georgia, serif;
+  color: rgba(59, 130, 246, 0.06);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.testi-card-v2:hover {
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: 0 20px 60px rgba(30, 58, 138, 0.12);
+  transform: translateY(-5px);
+}
+
+/* =============================================
+   RESPONSIVE OVERRIDES
+   ============================================= */
+@media (max-width: 1024px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-steps { grid-template-columns: repeat(2, 1fr); gap: 48px 0; }
+  .process-steps::before { display: none; }
+}
+
+@media (max-width: 768px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .stat-item:last-child { border-bottom: none; }
+
+  .process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+
+  .lamp-beam-left, .lamp-beam-right { width: 50%; }
+  .lamp-glow-line { width: 70%; }
+  .orbit-ring-1 { width: 200px; height: 200px; }
+  .orbit-ring-2 { width: 300px; height: 300px; }
+
+  .notif-toast-2, .notif-toast-3 { display: none; }
+
+  .testi-card-v2 { min-width: 300px; }
+}
+
+@media (max-width: 480px) {
+  .process-steps { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+}
