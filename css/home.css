@@ -22,7 +22,7 @@
 .hero-image {
   position: absolute;
   inset: 0;
-  background: url('../images/herobanner.png') center/cover no-repeat;
+  background:url('../images/herobanner.png') center/cover no-repeat;
   opacity: 0.9; /* adjust visibility */
   z-index: 0;
 }
@@ -318,7 +318,7 @@
 
 .logo-marquee {
   overflow: hidden;
-  padding: 40px 0;
+  padding: 10px 0;
   background: #ffffff;
 }
 
@@ -337,7 +337,7 @@
 
 /* Logo styling */
 .marquee-content img {
-  height: 80px;
+  height: 40px;
   width: auto;
   object-fit: contain;
   opacity: 1;
