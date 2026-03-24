@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---- Testimonials Carousel ----
   const track = document.getElementById('testimonials-track');
-  const cards = track?.querySelectorAll('.testimonial-card');
+  const cards = track?.querySelectorAll('.testi-card-v2');
   const dotsContainer = document.getElementById('carousel-dots');
   const prevBtn = document.getElementById('prev-btn');
   const nextBtn = document.getElementById('next-btn');
