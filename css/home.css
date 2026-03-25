@@ -456,7 +456,7 @@
 
 /* Logo styling */
 .marquee-content img {
-  height: 80px;
+  height: 100px;
   width: auto;
   object-fit: contain;
   opacity: 1;
