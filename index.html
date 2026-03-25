@@ -29,7 +29,7 @@
         <a href="services.html" class="nav-link">Services</a>
         <a href="projects.html" class="nav-link">Projects</a>
         <a href="blog.html" class="nav-link">Blog</a>
-        <a href="index.html#calculator" class="nav-link">Calculator</a>
+        <a href="index.html#complaint-form" class="nav-link">Complaint</a>
         <a href="index.html#contact" class="nav-link">Contact</a>
       </nav>
 
@@ -194,6 +194,8 @@
       <img src="images/mnre.png" alt="MNRE">
       <img src="images/smcapp.png" alt="SMC APP">
       <img src="images/tpwodl.png" alt="TPWODL">
+      <img src="images/tpcodl.png" alt="TPCODL">
+      <img src="images/obcc.png" alt="OPCC">
       <img src="images/olicl.png" alt="Odisha Irrigation">
       <img src="images/opgc.png" alt="OPGC">
       <img src="images/os.png" alt="Odisha Shaasan ">
@@ -209,6 +211,8 @@
       <img src="images/mnre.png" alt="MNRE">
       <img src="images/smcapp.png" alt="SMC APP">
       <img src="images/tpwodl.png" alt="TPWODL">
+       <img src="images/tpcodl.png" alt="TPCODL">
+       <img src="images/obcc.png" alt="OPCC">
       <img src="images/olicl.png" alt="Odisha Irrigation">
       <img src="images/opgc.png" alt="OPGC">
       <img src="images/os.png" alt="Odisha Shaasan ">
@@ -721,7 +725,69 @@
         </form>
       </div>
     </div>
+    
+<br>
+<br>
+<div class="map-wrapper">
+  <a href="https://www.google.com/maps?q=Brundaban+Bihar+Lane+1+Sarlakani+Sakhipada+Sambalpur+Odisha+Sambalpur+India+768001" target="_blank">
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps?q=Brundaban+Bihar+Lane+1+Sarlakani+Sakhipada+Sambalpur+Odisha+Sambalpur+India+768001&output=embed"
+        width="100%"
+        height="350"
+        style="border:0; border-radius:16px; pointer-events:none;"
+        loading="lazy">
+      </iframe>
+      <div class="map-overlay"></div>
+    </div>
+  </a>
+</div>
   </section>
+
+  <section class="complaint-section">
+  <form class="contact-form glass-card complaint-card" id="complaint-form">
+    <h3>Register a Complaint</h3>
+
+    <div class="form-row">
+      <div class="form-group">
+        <input type="text" id="c-name" placeholder="Your Name" required />
+      </div>
+      <div class="form-group">
+        <input type="tel" id="c-phone" placeholder="Phone Number" required />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <input type="email" id="c-email" placeholder="Email Address" />
+      </div>
+      <div class="form-group">
+        <input type="text" id="c-location" placeholder="City / Village" required />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <select id="c-type" required>
+        <option value="">Complaint Type</option>
+        <option>Service Delay</option>
+        <option>Installation Issue</option>
+        <option>Maintenance Problem</option>
+        <option>Billing Issue</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <textarea id="c-message" rows="4" placeholder="Describe your complaint..." required></textarea>
+    </div>
+
+    <button type="submit" class="btn-glow complaint-btn" id="c-submit-btn">
+      Submit Complaint
+    </button>
+
+    <p class="form-note">We will resolve your issue within 24–48 hours.</p>
+  </form>
+</section>
 
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
@@ -793,6 +859,22 @@
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
         <p>© 2026 Ojas Traders &amp; Contractors. All rights reserved.</p>
+        
+        <p style="color:red;"><!-- Default Statcounter code for Ojas Traders and Contractors
+        https://lavender-ram-684344.hostingersite.com/ojas/ -->
+        <script type="text/javascript">
+        var sc_project=13212719; 
+        var sc_invisible=0; 
+        var sc_security="3d2adba3"; 
+        var scJsHost = "https://";
+        document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+        "statcounter.com/counter/counter.js'></"+"script>");
+        </script>
+        <noscript><div class="statcounter"><a title="Web Analytics"
+        href="https://statcounter.com/" target="_blank"><img class="statcounter"
+        src="https://c.statcounter.com/13212719/0/3d2adba3/0/" alt="Web Analytics"
+        referrerPolicy="no-referrer-when-downgrade"></a></div></noscript></p>
+        <!-- End of Statcounter Code -->
        <p> <a href="https://digitran.agency/">Powered by DigiTran</a></p>
       </div>
     </div>
@@ -812,5 +894,7 @@
   <script>
   lucide.createIcons();
 </script>
+
+
 </body>
 </html>
