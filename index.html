@@ -56,8 +56,21 @@
       <div class="lamp-glow-line"></div>
       <div class="lamp-orb"></div>
     </div>
-    <div class="hero-image">
-    </div>
+    <div class="hero-slider">
+  <div class="hero-slide active" style="background-image: url('images/herobanner1.png');"></div>
+  <div class="hero-slide" style="background-image: url('images/herobanner2.png');"></div>
+  <div class="hero-slide" style="background-image: url('images/herobanner3.png');"></div>
+  <div class="hero-slide" style="background-image: url('images/herobanner4.png');"></div>
+  <div class="hero-slide" style="background-image: url('images/herobanner5.png');"></div>
+</div>
+
+<div class="hero-dots">
+  <span class="dot active"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
 
     <!-- Particle Canvas -->
     <canvas id="particle-canvas" aria-hidden="true"></canvas>
@@ -77,14 +90,9 @@
           MNRE Approved &nbsp;·&nbsp; PM Surya Ghar Ready
         </div>
 
-        <h1 class="hero-title">
-          Save <span class="gradient-text-animated">₹3000</span>/mo<br/>
-          with Rooftop Solar
-        </h1>
-        <p class="hero-subtitle">
-          Odisha's fastest-growing solar contractor. Zero upfront with subsidy.
-          Trusted by 500+ homes in Sambalpur &amp; beyond.
-        </p>
+        <h1 class="hero-title" id="hero-title"></h1>
+
+       <p class="hero-subtitle" id="hero-subtitle"></p>
         <div class="hero-actions">
           <a href="#calculator" class="btn-glow btn-magnetic" id="hero-calc-btn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">

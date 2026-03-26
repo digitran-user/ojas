@@ -194,3 +194,70 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroStats = document.querySelector('.hero-stats');
   if (heroStats) statsObserver.observe(heroStats);
 });
+
+
+
+
+
+const heroContent = [
+  
+  {
+    title: `Powering Infrastructure with <span class="gradient-text-animated">EPC Solutions</span>`,
+    subtitle: `11KV & 33KV transmission lines and substation expertise you can trust.`
+  },
+  {
+    title: `Reliable <span class="gradient-text-animated">LT Line Services</span>`,
+    subtitle: `Supply, erection, shifting and maintenance for uninterrupted power.`
+  },
+  {
+    title: `Modern <span class="gradient-text-animated">Lighting Solutions</span>`,
+    subtitle: `Street, garden & decorative lighting for every space.`
+  },
+  {
+    title: `Complete <span class="gradient-text-animated">Solar & Electrical</span> Solutions`,
+    subtitle: `From homes to industries — end-to-end services under one roof.`
+  },
+  {
+    title: `Save <span class="gradient-text-animated">₹3000</span>/mo<br/> with Rooftop Solar`,
+    subtitle: `Zero upfront solar solutions with subsidy. Trusted by 100+ homes in Odisha.`
+  }
+];
+
+const slides = document.querySelectorAll(".hero-slide");
+const dots = document.querySelectorAll(".dot");
+const titleEl = document.getElementById("hero-title");
+const subtitleEl = document.getElementById("hero-subtitle");
+
+let current = 0;
+
+function updateHeroContent(index) {
+  titleEl.innerHTML = heroContent[index].title;
+  subtitleEl.innerHTML = heroContent[index].subtitle;
+}
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === index);
+  });
+
+  dots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === index);
+  });
+
+  updateHeroContent(index);
+}
+
+setInterval(() => {
+  current = (current + 1) % slides.length;
+  showSlide(current);
+}, 5000);
+
+// initial load
+updateHeroContent(0);
+
+dots.forEach((dot, index) => {
+  dot.addEventListener("click", () => {
+    current = index;
+    showSlide(current);
+  });
+});
